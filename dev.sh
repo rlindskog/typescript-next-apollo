@@ -1,0 +1,1 @@
+now dev & npx graphql-codegen --watch
