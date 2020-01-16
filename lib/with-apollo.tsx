@@ -8,6 +8,7 @@ import fetch from 'isomorphic-unfetch'
 
 let globalApolloClient: any = null
 
+
 const withApollo = (PageComponent: any, { ssr = true } = {}) => {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }: any) => {
     const client = apolloClient || initApolloClient(apolloState)
@@ -116,6 +117,14 @@ function createApolloClient(initialState = {}) {
       credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
       fetch,
     }),
+    request (operation) {
+      const token = window?.localStorage.getItem('token')
+      operation.setContext({
+        headers: {
+          authorization: token ? `Bearer ${token}` : ''
+        }
+      })
+    },
     cache: new InMemoryCache().restore(initialState),
   })
 }

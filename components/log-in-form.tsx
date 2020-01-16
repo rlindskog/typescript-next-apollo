@@ -1,5 +1,6 @@
 import React from 'react'
-import withApollo from '../apollo/with-apollo'
+import withApollo from '../lib/with-apollo'
+
 
 
 const LogInForm: React.FC = ({  }) => {
