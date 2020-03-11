@@ -1,7 +1,0 @@
-projects:
-  app:
-    schemaPath: api/schema.graphql
-    includes: ["**/*.graphql"]
-    extensions:
-      endpoints:
-        default: http://localhost:3000/api
